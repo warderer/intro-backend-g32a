@@ -1,5 +1,6 @@
 // #1 Llamar a la biblioteca de express (importala)
 const express = require('express'); // import en Common JS (CJS)
+const petsRoutes = require('./api/v1/pets'); // Importo mis rutas al servidor de express
 
 // #2a Crear una instancia de express
 const app = express();
@@ -12,6 +13,9 @@ app.use(express.urlencoded({ extended: true })); // Ayuda a express a entender l
 app.get('/', (req, res) => {
   res.send('Hola mundo');
 });
+
+// #3b Usar las rutas de archivos externos
+app.use(petsRoutes);
 
 // #4 Levantar el servidor en un puerto, por ejemplo el 3000
 app.listen(3000, () => {

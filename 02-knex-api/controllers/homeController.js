@@ -17,6 +17,13 @@ const createHome = (req, res) => {
 }
 
 // Read
+const findAllHomes = (req, res) => {
+  ModelHomes.findAll().then((homes) => {
+    res.status(200).json(homes)
+  }).catch((error) => {
+    res.status(400).json(error.message)
+  })
+}
 
 // Update
 
@@ -25,5 +32,6 @@ const createHome = (req, res) => {
 // #3 Exportar las funciones para que sean accesibles desde las rutas (vista).
 
 module.exports = {
-  createHome
+  createHome,
+  findAllHomes
 }

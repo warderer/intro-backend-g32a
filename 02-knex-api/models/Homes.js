@@ -18,6 +18,12 @@ const create = (bodyHome) => {
 }
 
 // READ
+const findAll = () => {
+  return knex
+    .select('*')
+    .from('homes')
+    .where('active', true)
+}
 
 // UPDATE
 
@@ -25,5 +31,6 @@ const create = (bodyHome) => {
 
 // #3 Exportar las funciones para que sean accesibles desde el controlador.
 module.exports = {
-  create
+  create,
+  findAll
 }

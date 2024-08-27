@@ -34,6 +34,13 @@ const findOne = (houseId) => {
 }
 
 // UPDATE
+const update = (houseId, bodyToUpdate) => {
+  return knex
+    .update(bodyToUpdate)
+    .from('homes')
+    .where('house_id', houseId)
+    .returning(['house_id', 'title', 'description', 'guest', 'address', 'rental_price', 'fk_user', 'active', 'created_at'])
+}
 
 // DELETE
 
@@ -41,5 +48,6 @@ const findOne = (houseId) => {
 module.exports = {
   create,
   findAll,
-  findOne
+  findOne,
+  update
 }

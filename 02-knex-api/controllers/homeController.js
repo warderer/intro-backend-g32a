@@ -34,6 +34,11 @@ const findOneHome = (req, res) => {
 }
 
 // Update
+const updateOneHome = (req, res) => {
+  ModelHomes.update(req.params.idHome, req.body)
+    .then(home => res.status(200).json(home))
+    .catch(error => res.status(400).json(error.message))
+}
 
 // Delete
 
@@ -42,5 +47,6 @@ const findOneHome = (req, res) => {
 module.exports = {
   createHome,
   findAllHomes,
-  findOneHome
+  findOneHome,
+  updateOneHome
 }

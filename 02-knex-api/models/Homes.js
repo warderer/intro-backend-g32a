@@ -25,6 +25,14 @@ const findAll = () => {
     .where('active', true)
 }
 
+const findOne = (houseId) => {
+  return knex
+    .select('*')
+    .from('homes')
+    .where('house_id', houseId)
+    .where('active', true)
+}
+
 // UPDATE
 
 // DELETE
@@ -32,5 +40,6 @@ const findAll = () => {
 // #3 Exportar las funciones para que sean accesibles desde el controlador.
 module.exports = {
   create,
-  findAll
+  findAll,
+  findOne
 }

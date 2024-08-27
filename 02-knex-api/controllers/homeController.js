@@ -41,6 +41,17 @@ const updateOneHome = (req, res) => {
 }
 
 // Delete
+const softDeleteOneHome = (req, res) => {
+  ModelHomes.softDelete(req.params.idHome)
+    .then(home => res.status(204).json())
+    .catch(error => res.status(400).json(error.message))
+}
+
+const destroyOneHome = (req, res) => {
+  ModelHomes.destroy(req.params.idHome)
+    .then(home => res.status(204).json())
+    .catch(error => res.status(400).json(error.message))
+}
 
 // #3 Exportar las funciones para que sean accesibles desde las rutas (vista).
 
@@ -48,5 +59,7 @@ module.exports = {
   createHome,
   findAllHomes,
   findOneHome,
-  updateOneHome
+  updateOneHome,
+  softDeleteOneHome,
+  destroyOneHome
 }

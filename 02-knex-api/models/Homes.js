@@ -43,11 +43,28 @@ const update = (houseId, bodyToUpdate) => {
 }
 
 // DELETE
+// Este es un soft delete, no borra realmente un registro de la base de datos, solo actualiza el campo active a false
+const softDelete = (houseId) => {
+  return knex
+    .update({ active: false })
+    .from('homes')
+    .where('house_id', houseId)
+}
+
+// Este si borra realmente un registro de la base de datos
+const destroy = (houseId) => {
+  return knex
+    .delete()
+    .from('homes')
+    .where('house_id', houseId)
+}
 
 // #3 Exportar las funciones para que sean accesibles desde el controlador.
 module.exports = {
   create,
   findAll,
   findOne,
-  update
+  update,
+  softDelete,
+  destroy
 }
